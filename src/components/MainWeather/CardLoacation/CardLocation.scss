@@ -1,0 +1,12 @@
+.location{
+  &__name{
+    font-size: 38px;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  &__description{
+    display: inline-block;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+}

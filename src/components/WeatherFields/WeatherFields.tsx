@@ -1,8 +1,11 @@
 import React from 'react'
-
+import './WeatherFields.scss'
 const WeatherFields = () => {
   return (
-    <div>WeatherFields</div>
+    <div>
+      <div></div>
+      <div></div>
+    </div>
   )
 }
 

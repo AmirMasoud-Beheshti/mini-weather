@@ -1,9 +1,29 @@
-import React from 'react'
-import './MainWeather.scss'
-const MainWeather = () => {
-  return (
-    <div className=''>MainWeather</div>
-  )
+import React from "react";
+import CardLocation from "./CardLoacation/CardLocation";
+import CardTemperature from "./CardTemperature/CardTemperature";
+import "./MainWeather.scss";
+export interface MainWeatherProps {
+  location?: string;
+  weatherDescription?: string;
+  weatherImage?: string;
+  temperature?: string;
+  feelsLike?: string;
 }
+const MainWeather = (props: MainWeatherProps) => {
+  const {
+    location = "Tehran",
+    weatherDescription = "few cloudes",
+    weatherImage = "/images/sunny.png",
+    temperature = "21°C",
+    feelsLike='Feels like 21°C'
+  } = props;
+  return (
+    <div className="main-weather">
+      <CardLocation />
+      <img src={weatherImage} alt="" />
+      <CardTemperature temperature={temperature} feelsLike={feelsLike} />
+    </div>
+  );
+};
 
-export default MainWeather
+export default MainWeather;
