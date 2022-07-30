@@ -5,30 +5,26 @@ import "./WeatherFields.scss";
 import { useDispatch, useSelector } from "react-redux";
 import WeatherForm from "./WeatherForm/WeatherForm";
 import { AppDispatch, TRootState } from "../../store/store";
-import { fetchWeather } from "./metricsFieldsSlice";
+import { fetchWeather, selectCurrentWeather } from "./metricsFieldsSlice";
+import { ICurrentWeather, Status } from "../../constants/interfaces";
 const WeatherFields = () => {
-  const dispatch = useDispatch<AppDispatch>()
-  const metricsData: MetricsCardProps[] = useSelector(
-    (state: TRootState) => state.metricsFields
+  const dispatch = useDispatch<AppDispatch>();
+  const weatherStatus = useSelector<TRootState>(
+    (state) => state.metricsFields.status
   );
-  useEffect(()=> {
-    dispatch(fetchWeather())
-  },[])
-  const renderedFields = metricsData.map((item, index) => {
-    return (
-      <MetricsCard
-        key={`metrics-${index}`}
-        title={item.title}
-        value={item.value}
-        unit={item.unit}
-        imageSrc={item.imageSrc}
-      />
-    );
-  });
+
+  const currentWeather = useSelector(selectCurrentWeather);
+  useEffect(() => {
+    if (weatherStatus === Status.Idle) {
+      dispatch(fetchWeather());
+    }
+  }, [weatherStatus]);
+
+
   return (
     <div>
       <WeatherForm />
-      <div className="weather-fields">{renderedFields}</div>
+      <div className="weather-fields">{}</div>
     </div>
   );
 };
