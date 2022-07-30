@@ -1,46 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import MetricsCard, { MetricsCardProps } from "./MetricsCard/MetricsCard";
 import "./WeatherFields.scss";
+
+import { useDispatch, useSelector } from "react-redux";
 import WeatherForm from "./WeatherForm/WeatherForm";
+import { AppDispatch, TRootState } from "../../store/store";
+import { fetchWeather } from "./metricsFieldsSlice";
 const WeatherFields = () => {
-  const metricsData: MetricsCardProps[] = [
-    {
-      title: "Humidity",
-      value: "17",
-      unit: "%",
-      imageSrc: "/images/sunny.png",
-    },
-    {
-      title: "Humidity",
-      value: "17",
-      unit: "%",
-      imageSrc: "/images/sunny.png",
-    },
-    {
-      title: "Humidity",
-      value: "17",
-      unit: "%",
-      imageSrc: "/images/sunny.png",
-    },
-    {
-      title: "Humidity",
-      value: "17",
-      unit: "%",
-      imageSrc: "/images/sunny.png",
-    },
-    {
-      title: "Humidity",
-      value: "17",
-      unit: "%",
-      imageSrc: "/images/sunny.png",
-    },
-    {
-      title: "Humidity",
-      value: "17",
-      unit: "%",
-      imageSrc: "/images/sunny.png",
-    },
-  ];
+  const dispatch = useDispatch<AppDispatch>()
+  const metricsData: MetricsCardProps[] = useSelector(
+    (state: TRootState) => state.metricsFields
+  );
+  useEffect(()=> {
+    dispatch(fetchWeather())
+  },[])
   const renderedFields = metricsData.map((item, index) => {
     return (
       <MetricsCard
@@ -55,7 +28,7 @@ const WeatherFields = () => {
   return (
     <div>
       <WeatherForm />
-      <div>{renderedFields}</div>
+      <div className="weather-fields">{renderedFields}</div>
     </div>
   );
 };
