@@ -1,9 +1,9 @@
 import React from 'react';
-import   './App.scss'
+import  styles from './App.module.scss'
 import WeatherCard from './components/WeatherCard/WeatherCard';
 function App() {
   return (
-    <div className='app'>
+    <div className={styles['app']}>
       <WeatherCard/>
     </div>
   );

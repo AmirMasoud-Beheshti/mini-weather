@@ -1,7 +1,7 @@
 import React from "react";
 import CardLocation from "./CardLoacation/CardLocation";
 import CardTemperature from "./CardTemperature/CardTemperature";
-import "./MainWeather.scss";
+import styles from "./MainWeather.module.scss";
 export interface MainWeatherProps {
   location?: string;
   weatherDescription?: string;
@@ -18,7 +18,7 @@ const MainWeather = (props: MainWeatherProps) => {
     feelsLike='Feels like 21°C'
   } = props;
   return (
-    <div className="main-weather">
+    <div className={styles["main-weather"]}>
       <CardLocation />
       <img src={weatherImage} alt="" />
       <CardTemperature temperature={temperature} feelsLike={feelsLike} />

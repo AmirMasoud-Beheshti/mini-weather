@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
-import MetricsCard, { MetricsCardProps } from "./MetricsCard/MetricsCard";
-import "./WeatherFields.scss";
+import styles from "./WeatherFields.module.scss";
 
 import { useDispatch, useSelector } from "react-redux";
 import WeatherForm from "./WeatherForm/WeatherForm";
 import { AppDispatch, TRootState } from "../../store/store";
 import { fetchWeather, selectCurrentWeather } from "./metricsFieldsSlice";
 import { Status } from "../../constants/interfaces";
+import MetricsCard, { MetricsCardProps } from "./MetricsCard/MetricsCard";
 const WeatherFields = () => {
   const dispatch = useDispatch<AppDispatch>();
   const weatherStatus = useSelector<TRootState>(
@@ -66,7 +66,7 @@ const WeatherFields = () => {
   return (
     <div className="weather-container">
       <WeatherForm />
-      <div className="weather-fields">{renderedCurrentFields}</div>
+      <div className={styles["weather-fields"]}>{renderedCurrentFields}</div>
     </div>
   );
 };
