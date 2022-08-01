@@ -1,8 +1,8 @@
 import React from 'react'
-
+import styles from './WeatherForm.module.scss'
 const WeatherForm = () => {
   return (
-    <div>
+    <div className={styles['']}>
       <input type="text" />
       <div>
         <span>Tuesday,</span>

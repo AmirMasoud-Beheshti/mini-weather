@@ -1,5 +1,5 @@
 import React from "react";
-import './MetricsCard.scss'
+import styles from './MetricsCard.module.scss'
 export interface MetricsCardProps {
   title: string;
   value: string | number;
@@ -9,7 +9,7 @@ export interface MetricsCardProps {
 const MetricsCard = (props: MetricsCardProps) => {
   const { title, value, unit,imageSrc } = props;
   return (
-    <div className="metrics">
+    <div className={styles["metrics-field"]}>
       <div>{title}</div>
       <div>
         <div>
